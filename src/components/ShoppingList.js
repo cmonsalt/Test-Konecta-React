@@ -1,7 +1,11 @@
 import React from "react";
 import Shopping from "./Shopping";
 
-const ShoppingList = ({ products, setshoppingProductEdit }) => {
+const ShoppingList = ({
+  products,
+  setshoppingProductEdit,
+  shoppingProductUpdate,
+}) => {
   return (
     <div>
       <h1>Compras</h1>
@@ -20,6 +24,7 @@ const ShoppingList = ({ products, setshoppingProductEdit }) => {
             product={product}
             key={product.id}
             setshoppingProductEdit={setshoppingProductEdit}
+            shoppingProductUpdate={shoppingProductUpdate}
           />
         ))}
       </table>

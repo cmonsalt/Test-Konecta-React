@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ProductList from "./components/ProductList";
 import ProductForm from "./components/ProductForm";
 import ShoppingList from "./components/ShoppingList";
@@ -20,13 +20,14 @@ function App() {
   const [productEdit, setProductEdit] = useState(null);
   const [shoppingProductEdit, setshoppingProductEdit] = useState(null);
 
-  //Para las compras
-  // const shoppingProductUpdate = (productStockEdit) => {
-  //   const changedProducts = products.map((product) =>
-  //     product.id === productStockEdit.id ? productStockEdit : product
-  //   );
-  //   setProducts(changedProducts);
-  // };
+  // Para las compras
+
+  const shoppingProductUpdate = (shoppingProductEdit) => {
+    const changedProducts = products.map((product) =>
+      product.id === shoppingProductEdit.id ? shoppingProductEdit : product
+    );
+    setProducts(changedProducts);
+  };
 
   //Para la lista de productos
   const productDelete = (productId) => {
@@ -78,6 +79,7 @@ function App() {
       <ShoppingList
         products={products}
         setshoppingProductEdit={setshoppingProductEdit}
+        shoppingProductUpdate={shoppingProductUpdate}
       />
     </div>
   );
