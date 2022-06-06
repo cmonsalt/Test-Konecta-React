@@ -40,7 +40,9 @@ const Shopping = ({
             <button
               className="btn btn-sm btn-outline-danger"
               onClick={() => {
-                product.stock && counter !== 0 && setCounter(counter - 1);
+                if (product.stock & (counter !== 0) || counter) {
+                  setCounter(counter - 1);
+                }
                 SetValue(false);
               }}
             >
