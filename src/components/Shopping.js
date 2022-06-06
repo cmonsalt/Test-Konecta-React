@@ -2,18 +2,21 @@ import React, { useEffect, useState } from "react";
 
 const Shopping = ({
   product,
-  setshoppingProductEdit,
+  // setshoppingProductEdit,
   shoppingProductUpdate,
 }) => {
   const [counter, setCounter] = useState(0);
+  const [value, SetValue] = useState(null);
 
   useEffect(() => {
     const shoppingProductEdit = {
       ...product,
-      stock: product.stock - 1,
+      stock: value ? product.stock - 1 : product.stock + 1,
+      cantidad: counter,
     };
+
     shoppingProductUpdate(shoppingProductEdit);
-    setshoppingProductEdit(shoppingProductEdit);
+    // setshoppingProductEdit(shoppingProductEdit);
   }, [counter]);
 
   return (
@@ -28,15 +31,18 @@ const Shopping = ({
               className="btn btn-sm btn-outline-success"
               onClick={() => {
                 product.stock > 0 && setCounter(counter + 1);
+                product.stock === 0 && alert("Producto sin Stock");
+                SetValue(true);
               }}
             >
               +
             </button>{" "}
             <button
               className="btn btn-sm btn-outline-danger"
-              onClick={() =>
-                product.stock && counter !== 0 && setCounter(counter - 1)
-              }
+              onClick={() => {
+                product.stock && counter !== 0 && setCounter(counter - 1);
+                SetValue(false);
+              }}
             >
               -
             </button>{" "}
@@ -44,7 +50,6 @@ const Shopping = ({
           <td>{counter}</td>
         </tr>
       </tbody>
-      {product.stock === 0 && alert("Producto sin Stock")}
     </>
   );
 };

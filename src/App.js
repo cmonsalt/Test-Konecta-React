@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ProductList from "./components/ProductList";
 import ProductForm from "./components/ProductForm";
 import ShoppingList from "./components/ShoppingList";
+import Queries from "./components/Queries";
 
 const initialProducts = [
   {
@@ -18,10 +19,9 @@ const initialProducts = [
 function App() {
   const [products, setProducts] = useState(initialProducts);
   const [productEdit, setProductEdit] = useState(null);
-  const [shoppingProductEdit, setshoppingProductEdit] = useState(null);
+  // const [shoppingProductEdit, setshoppingProductEdit] = useState(null);
 
   // Para las compras
-
   const shoppingProductUpdate = (shoppingProductEdit) => {
     const changedProducts = products.map((product) =>
       product.id === shoppingProductEdit.id ? shoppingProductEdit : product
@@ -78,9 +78,10 @@ function App() {
       <hr />
       <ShoppingList
         products={products}
-        setshoppingProductEdit={setshoppingProductEdit}
+        // setshoppingProductEdit={setshoppingProductEdit}
         shoppingProductUpdate={shoppingProductUpdate}
       />
+      <Queries products={products} />
     </div>
   );
 }

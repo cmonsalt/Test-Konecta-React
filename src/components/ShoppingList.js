@@ -3,7 +3,7 @@ import Shopping from "./Shopping";
 
 const ShoppingList = ({
   products,
-  setshoppingProductEdit,
+  // setshoppingProductEdit,
   shoppingProductUpdate,
 }) => {
   return (
@@ -23,7 +23,7 @@ const ShoppingList = ({
           <Shopping
             product={product}
             key={product.id}
-            setshoppingProductEdit={setshoppingProductEdit}
+            // setshoppingProductEdit={setshoppingProductEdit}
             shoppingProductUpdate={shoppingProductUpdate}
           />
         ))}
